@@ -1,51 +1,50 @@
 package sort;
 
 public class QuickSort {
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({ "unchecked" })
 	public static void sort(Comparable[] data,int low,int high){
-		// ÊàÅ¦Ôª£¬Ò»°ãÒÔµÚÒ»¸öÔªËØÎª»ù×¼½øĞĞ»®·Ö
+		// æ¢çº½å…ƒï¼Œä¸€èˆ¬ä»¥ç¬¬ä¸€ä¸ªå…ƒç´ ä¸ºåŸºå‡†è¿›è¡Œåˆ’åˆ†
 		int i = low;
 		int j = high;
 		if (low < high) {
-			// ´ÓÊı×éÁ½¶Ë½»ÌæµØÏòÖĞ¼äÉ¨Ãè
+			// ä»æ•°ç»„ä¸¤ç«¯äº¤æ›¿åœ°å‘ä¸­é—´æ‰«æ
 			Comparable pivotKey = data[low];
-			// ½øĞĞÉ¨ÃèµÄÖ¸Õëi,j;i´Ó×ó±ß¿ªÊ¼£¬j´ÓÓÒ±ß¿ªÊ¼
+			// è¿›è¡Œæ‰«æçš„æŒ‡é’ˆi,j;iä»å·¦è¾¹å¼€å§‹ï¼Œjä»å³è¾¹å¼€å§‹
 			while (i < j) {
 				while (i < j && data[j].compareTo(pivotKey) > 0) {
-					// ÕÒµ½ÊàÅ¦ÖµÔªËØĞ¡µÄÔªËØindex j
+					// æ‰¾åˆ°æ¢çº½å€¼å…ƒç´ å°çš„å…ƒç´ index j
 					j--;
 				}
-				
+
 				if (i < j) {
-					// ±ÈÊàÅ¦ÔªËØĞ¡µÄÒÆ¶¯µ½×ó±ß
+					// æ¯”æ¢çº½å…ƒç´ å°çš„ç§»åŠ¨åˆ°å·¦è¾¹
 					data[i] = data[j];
 					i++;
 				}
-				
+
 				while (i < j && data[i].compareTo(pivotKey) < 0) {
-					// ÕÒµ½±ÈÊàÅ¦ÔªËØ´óµÄÔªËØindex
+					// æ‰¾åˆ°æ¯”æ¢çº½å…ƒç´ å¤§çš„å…ƒç´ index
 					i++;
 				}
-				
+
 				if (i < j) {
-					// ±ÈÊàÅ¦ÔªËØ´óµÄÒÆ¶¯µ½ÓÒ±ß
+					// æ¯”æ¢çº½å…ƒç´ å¤§çš„ç§»åŠ¨åˆ°å³è¾¹
 					data[j] = data[i];
 					j--;
 				}
 			}
-			// ÊàÅ¦ÔªËØÒÆ¶¯µ½ÕıÈ·Î»ÖÃ
+			// æ¢çº½å…ƒç´ ç§»åŠ¨åˆ°æ­£ç¡®ä½ç½®
 			data[i] = pivotKey;
-			// Ç°°ë¸ö×Ó±íµİ¹éÅÅĞò
+			// å‰åŠä¸ªå­è¡¨é€’å½’æ’åº
 			sort(data,low,i - 1);
-			// ºó°ë¸ö×Ó±íµİ¹éÅÅĞò
+			// ååŠä¸ªå­è¡¨é€’å½’æ’åº
 			sort(data,i + 1,high);
 		}// end if
 	}// end sort
-	
-	@SuppressWarnings("rawtypes")
+
 	public static void main(String[] args) {
-		// ÔÚJDK1.5°æ±¾ÒÔÉÏ£¬»ù±¾Êı¾İÀàĞÍ¿ÉÒÔ×Ô¶¯×°Ïä
-		// int,doubleµÈ»ù±¾ÀàĞÍµÄ°ü×°ÀàÒÑÊµÏÖÁËComparable½Ó¿Ú
+		// åœ¨JDK1.5ç‰ˆæœ¬ä»¥ä¸Šï¼ŒåŸºæœ¬æ•°æ®ç±»å‹å¯ä»¥è‡ªåŠ¨è£…ç®±
+		// int,doubleç­‰åŸºæœ¬ç±»å‹çš„åŒ…è£…ç±»å·²å®ç°äº†Comparableæ¥å£
 		Comparable[] c = { 4,9,23,1,45,27,3,2 };
 		sort(c,0,c.length - 1);
 		for (Comparable data : c) {
