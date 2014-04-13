@@ -22,7 +22,7 @@ public class Test1 {
 			
 		});
 		
-		System.out.println(names);
+		System.out.println(names + "123ßßß");
 		
 		
 	}
